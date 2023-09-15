@@ -12,15 +12,14 @@
   <body>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-sm-6 offset h-100">
-          <div class="row title">Create a simulated reader</div>
-          <div class="row margin pad">
-            <button id="create-location-button">
-              1. Create a location
-              <svg aria-hidden="true" height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.293 2.709A1 1 0 0 1 6.71 1.293l6.3 6.3a1 1 0 0 1 0 1.414l-6.3 6.3a1 1 0 0 1-1.416-1.416L10.884 8.3z" fill-rule="evenodd"></path>
-              </svg>
-            </button>
+        <div class="col-sm-6 offset h-100" id="button-col">
+          <div class="row title">Set Reader</div>
+
+          <div class="row margin pad text">Set Reader ID</div>
+          <div class="row pad">
+            <div class="">
+              <input id="reader-input" type="text" value="tmr_xxx">
+            </div>
           </div>
           <div class="row margin pad">
             <button id="create-reader-button">
@@ -48,16 +47,17 @@
               </svg>
             </button>
           </div>
-          <div class="row title">Simulate a transaction</div>
+
+          <div class="row title">Collect/Confirm Transaction</div>
           <div class="row margin pad text">Enter an amount</div>
           <div class="row pad">
             <div class="">
-              <input id="amount-input" type="text" value="2000">
+              <input id="amount-input-collect-confirm" type="text" value="2000">
             </div>
           </div>
           <div class="row margin pad">
             <button id="collect-payment-method-button">
-              3. Collect Payment Method
+              Collect Payment Method
               <svg aria-hidden="true" height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.293 2.709A1 1 0 0 1 6.71 1.293l6.3 6.3a1 1 0 0 1 0 1.414l-6.3 6.3a1 1 0 0 1-1.416-1.416L10.884 8.3z" fill-rule="evenodd"></path>
               </svg>
@@ -66,12 +66,14 @@
 
           <div class="row margin pad">
             <button id="present-payment-method-button">
-              3. Present Payment Method
+              (Simulated) Present Payment Method
               <svg aria-hidden="true" height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.293 2.709A1 1 0 0 1 6.71 1.293l6.3 6.3a1 1 0 0 1 0 1.414l-6.3 6.3a1 1 0 0 1-1.416-1.416L10.884 8.3z" fill-rule="evenodd"></path>
               </svg>
             </button>
           </div>
+
+          <div class="row instruction">💳 (Physical) Tap/Insert/Swipe the card</div>
 
           <div class="row margin pad">
             <button id="retrieve-reader-button">

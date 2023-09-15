@@ -5,11 +5,10 @@ function createLocation() {
 }
 
 function createReader() {
-  console.log("epeaser")
   return fetch("/register_reader", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ location_id: locationId }),
+    body: JSON.stringify({ reader_id: readerId }),
   }).then((response) => {
     console.log("hellooo")
     return response.json();
@@ -144,16 +143,13 @@ var readerId;
 var paymentIntentId;
 
 const createLocationButton = document.getElementById("create-location-button");
-createLocationButton.addEventListener("click", async (event) => {
-  createLocation().then((location) => {
-    log("POST /v1/terminal/locations", location);
-    locationId = location["id"];
-  });
-});
+
 
 const createReaderButton = document.getElementById("create-reader-button");
 createReaderButton.addEventListener("click", async (event) => {
-  createReader().then((reader) => {
+
+  readerId = document.getElementById("reader-input")
+  createReader(readerId).then((reader) => {
     log("POST /v1/terminal/readers", reader);
     readerId = reader["id"];
   });
@@ -177,7 +173,7 @@ selectionForm.addEventListener("click", async (event) => {
 
 const collectPaymentMethodButton = document.getElementById("collect-payment-method-button");
 collectPaymentMethodButton.addEventListener("click", async (event) => {
-  amount = document.getElementById("amount-input").value;
+  amount = document.getElementById("amount-input-collect-confirm").value;
   createPaymentIntent(amount).then(function(paymentIntent) {
     log("POST /v1/payment_intents", paymentIntent);
     paymentIntentId = paymentIntent["id"];
@@ -217,7 +213,7 @@ cancelButton.addEventListener("click", async (event) => {
 
 const processPaymentButton = document.getElementById("process-payment-button");
 processPaymentButton.addEventListener("click", async (event) => {
-  amount = document.getElementById("amount-input").value;
+  amount = document.getElementById("amount-input-collect-confirm").value;
   createPaymentIntent(amount).then(function(paymentIntent) {
     log("POST /v1/payment_intents", paymentIntent);
     paymentIntentId = paymentIntent["id"];
